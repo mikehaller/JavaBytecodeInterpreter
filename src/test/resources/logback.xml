@@ -1,0 +1,44 @@
+<configuration scan="true">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>interpreter.log</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %logger{10} %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE-Frames" class="ch.qos.logback.core.FileAppender">
+		<file>interpreter_frames.log</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %logger{10} %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE-Code" class="ch.qos.logback.core.FileAppender">
+		<file>interpreter_code.log</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %logger{10} %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE-Classloader" class="ch.qos.logback.core.FileAppender">
+		<file>interpreter_classloader.log</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %logger{10} %msg%n</pattern>
+		</encoder>
+	</appender>
+	<logger name="com.smartwerkz.bytecode.ExecutionEngine" additivity="false" level="DEBUG">
+		<appender-ref ref="FILE-Code" />
+	</logger>
+	<logger name="com.smartwerkz.bytecode.vm.Frame" additivity="false" level="DEBUG">
+		<appender-ref ref="FILE-Frames" />
+	</logger>
+	<logger name="com.smartwerkz.bytecode.vm.BootstrapClassloader" additivity="false" level="INFO">
+		<appender-ref ref="FILE-Classloader" />
+	</logger>
+	<root level="INFO">
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

@@ -1,0 +1,4 @@
+Java Bytecode Interpreter
+
+An interpreter for JVM bytecode, written in Java.
+Let's you virtually execute Java bytecode with fine-grained control over the execution details.
